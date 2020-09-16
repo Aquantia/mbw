@@ -1,4 +1,4 @@
-CFLAGS=-O2 -Wall -g -static
+CFLAGS=-O2 -Wall -g
 NAME=mbw
 TARFILE=${NAME}.tar.gz
 
