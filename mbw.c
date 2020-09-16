@@ -109,7 +109,7 @@ __attribute__((noinline)) void *arch_memcpy(void *dest, const void *src, size_t 
 #endif
 }
 
-#define CONFIG_MT_MAX_THREADS   4
+#define CONFIG_MT_MAX_THREADS   128
 
 double *data[CONFIG_MT_MAX_THREADS][MAX_TESTS];
 static pthread_t            mt_threads[CONFIG_MT_MAX_THREADS];
@@ -168,9 +168,8 @@ static int mt_init(void)
     sched_getaffinity(0, sizeof(cs), &cs);
 
     /* assuming 8 cores max */
-    for (i = 0; i < 8; i++)  {
+    for (i = 0; i < 128; i++)  {
         if (CPU_ISSET(i, &cs)) {
-            printf("Core %d\n", i);
             num_cores++;
         }
     }
